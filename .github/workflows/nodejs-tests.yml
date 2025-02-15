@@ -1,0 +1,72 @@
+name: NodeJS Build & Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose the test environment'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - master
+          - development
+      test_suite:
+        description: 'Choose the test suite'
+        required: true
+        default: 'smoke'
+        type: choice
+        options:
+          - smoke
+          - regression
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: cypress/included
+    env:
+      vcpadminnamespace: ${{ secrets.VCP_ADMIN_NAMESPACE }}
+      sairclient: ${{ secrets.SAIR_CLIENT }}
+      MERCHANTSTATUS_INDEX: ${{ secrets.MERCHANTSTATUS_INDEX }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: |
+          if [ "${{ github.event.inputs.environment }}" == "master" ]; then
+            if [ "${{ github.event.inputs.test_suite }}" == "smoke" ]; then
+              npm run test:mst-smoke | tee cypress-output.txt
+            else
+              npm run test:mst-regression
+            fi
+          else
+            if [ "${{ github.event.inputs.test_suite }}" == "smoke" ]; then
+              npm run test:dev-smoke
+            else
+              npm run test:dev-regression
+            fi
+          fi
+      
+      - name: Check test results
+        if: github.event.inputs.test_suite == 'smoke'
+        run: |
+          if grep -q "All specs passed" cypress-output.txt; then exit 0; else exit 1; fi
+      
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-artifacts
+          path: |
+            cypress/screenshots/**
+            cypress/videos/**
