@@ -1,0 +1,57 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Feature name",
+    "line": 1,
+    "id": "feature-name",
+    "tags": [],
+    "uri": "test.feature",
+    "elements": [
+      {
+        "id": "feature-name;this-is-test-scenario",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "this is test scenario",
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 2
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "starting test",
+            "result": {
+              "status": "passed",
+              "duration": 2198000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "Start to type1",
+            "result": {
+              "status": "passed",
+              "duration": 975000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Start to type2",
+            "result": {
+              "status": "passed",
+              "duration": 677000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

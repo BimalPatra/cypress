@@ -1,0 +1,42 @@
+{
+  "cucumberautocomplete.steps": [
+    "cypress/e2e/step-definitions/*.js"
+  ],
+  "cucumberautocomplete.syncfeatures": "cypress/e2e/features/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "mochaExplorer.debuggerConfig": "Mocha Tests",
+  "mochaExplorer.debuggerPort": 9229,
+  "mochaExplorer.files": [
+    "lib/**/*.test.js",
+    "*.test.js"
+  ],
+  "mochaExplorer.nodePath": null,
+  "mochaExplorer.timeout": 150000,
+  "[feature]": {
+    "editor.defaultFormatter": "alexkrechik.cucumberautocomplete",
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "eslint.format.enable": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "cSpell.words": [
+    "Bimal",
+    "Patra",
+    "abcdefghijk",
+    "bcjfhu",
+    "bcjfhugshggd",
+    "cobertura",
+    "codestyle",
+    "datetime",
+    "envsub",
+    "junit",
+    "papaparse",
+    "sendgrid",
+    "tfng",
+    "ustom"
+  ],
+}
