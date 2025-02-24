@@ -1,5 +1,5 @@
 Feature: Feature name
-  @smoke
+  @smokeTest
   Scenario: this is test scenario
     Given starting test
     When Start to type1
