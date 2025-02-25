@@ -19,10 +19,6 @@ on:
         options:
           - smoke
           - regression
-      test_vcpNameSpace:
-         description: 'Provide the VCP name space'
-         required: true
-         default: 'master'
       test_sairClient:
          description: 'Provide the sair client'
          required: true
@@ -37,7 +33,7 @@ jobs:
     container: cypress/included
     steps:
       - name: Set vcp Name Space
-        run: echo "vcpadminnaespace=${{ github.event.inputs.test_vcpNameSpace }}" >> $GITHUB_ENV
+        run: echo "vcpadminnaespace=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
       - name: Set sair Client
         run: echo "sairclient=${{ github.event.inputs.test_sairClient }}" >> $GITHUB_ENV
       - name: Set Marchant Status Index
