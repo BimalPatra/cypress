@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:dev-regression_1":"echo Error: no test specified bimal = $vcpadminnaespace",   
     "test:dev-regression_2":"echo Error: no test specified bimal = $sairclient",
-    "test:dev-regression_3":"echo Error: no test specified bimal = $MERCHANTSTATUS_INDEX"
+    "test:dev-regression_3":"echo Error: no test specified bimal = $MERCHANTSTATUS_INDEX",
+    "test:dev-regression_4":"echo Error: no test specified bimal =  $sairclient"
   },
   "author": "Bimal Patra",
   "license": "ISC",
