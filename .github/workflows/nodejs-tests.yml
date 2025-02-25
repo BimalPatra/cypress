@@ -1,4 +1,4 @@
-name: NodeJS Build & Test
+name: VCP cypress Automation
 
 on:
   workflow_dispatch:
