@@ -55,14 +55,14 @@ jobs:
       
       - name: Run tests
         run: |
-          if [ "${{ github.event.inputs.environment }}" == "master" ]; then
-            if [ "${{ github.event.inputs.test_suite }}" == "smoke" ]; then
+          if [ "${{ github.event.inputs.environment }}" = "master" ]; then
+            if [ "${{ github.event.inputs.test_suite }}" = "smoke" ]; then
               npm run test:dev-regression_1
             else
               npm run test:dev-regression_2
             fi
           else
-            if [ "${{ github.event.inputs.test_suite }}" == "smoke" ]; then
+            if [ "${{ github.event.inputs.test_suite }}" = "smoke" ]; then
               npm run test:dev-regression_3
             else
               npm run test:dev-regression_3
