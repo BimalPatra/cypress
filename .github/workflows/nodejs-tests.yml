@@ -26,7 +26,7 @@ on:
       test_MarchantStatusIndex:
          description: 'Provide marchant status index'
          required: true
-         default: 'smoke'
+         default: 'index bimal'
 jobs:
   test:
     runs-on: ubuntu-latest
