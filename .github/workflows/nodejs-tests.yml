@@ -65,7 +65,7 @@ jobs:
             if [ "${{ github.event.inputs.test_suite }}" = "smoke" ]; then
               npm run test:dev-regression_3
             else
-              npm run test:dev-regression_3
+              npm run test:dev-regression_4
             fi
           fi
       
