@@ -6,7 +6,7 @@ on:
       environment:
         description: 'Choose the test environment'
         required: true
-        default: 'development'
+        default: 'master'
         type: choice
         options:
           - master
@@ -19,16 +19,32 @@ on:
         options:
           - smoke
           - regression
-
+      test_vcpNameSpace:
+         description: 'Provide the VCP name space'
+         required: true
+         default: 'master'
+      test_sairClient:
+         description: 'Provide the sair client'
+         required: true
+         default: 'wpuk-master'
+      test_MarchantStatusIndex:
+         description: 'Provide marchant status index'
+         required: true
+         default: 'smoke'
 jobs:
   test:
     runs-on: ubuntu-latest
     container: cypress/included
-    env:
-      vcpadminnamespace: ${{ secrets.VCP_ADMIN_NAMESPACE }}
-      sairclient: ${{ secrets.SAIR_CLIENT }}
-      MERCHANTSTATUS_INDEX: ${{ secrets.MERCHANTSTATUS_INDEX }}
     steps:
+      - name: Set vcp Name Space
+        run: echo "vcpadminnaespace=${{ github.event.inputs.test_vcpNameSpace }}" >> $GITHUB_ENV
+      - name: Set sair Client
+        run: echo "sairclient=${{ github.event.inputs.test_sairClient }}" >> $GITHUB_ENV
+      - name: Set Marchant Status Index
+        run: echo "MERCHANTSTATUS_INDEX=${{ github.event.inputs.test_MarchantStatusIndex }}" >> $GITHUB_ENV
+      - name: Use the environment variable
+        run: |
+          echo "Deploying to: $sairclient"
       - name: Checkout repository
         uses: actions/checkout@v4
       
